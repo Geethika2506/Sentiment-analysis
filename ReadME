@@ -1,0 +1,97 @@
+
+# Project Description
+
+**Sentiment as a Time Series: Discourse-Level Analysis of Political Speeches**
+
+## Overview
+
+This project moves beyond document-level sentiment classification and instead analyzes how sentiment evolves throughout a speech. Rather than assigning a single polarity score to an entire document, the speech is segmented into sentences and sentiment is computed at each time step. This allows sentiment to be treated as a time series and interpreted in relation to rhetorical structure.
+
+Three speeches from the American Rhetoric Top 100 list were selected:
+
+* Inaugural Address (JFK, 1961)
+* Farewell Address
+* Checkers Speech
+
+The objective is to examine emotional progression, detect turning points, and compare structural patterns across speeches.
+
+---
+
+## Methodology
+
+### 1. Sentence Segmentation
+
+Each speech was segmented into sentences using a rule-based regular expression that splits text at sentence-ending punctuation. This ensures that sentiment is calculated at the sentence level.
+
+### 2. Sentiment Scoring
+
+Each sentence was assigned a polarity score using TextBlob sentiment analysis. Scores range from:
+
+* -1 (very negative)
+* 0 (neutral)
+* +1 (very positive)
+
+### 3. Temporal Indexing
+
+Sentences were indexed in sequential order to represent time. Additionally, time was normalized between 0 and 1 to allow comparison between speeches of different lengths.
+
+### 4. Time Series Construction
+
+For each speech, a sentiment time series was constructed:
+
+* x-axis: sentence index (or normalized time)
+* y-axis: sentiment score
+
+Summary statistics were computed:
+
+* Mean sentiment of first quartile
+* Mean sentiment of last quartile
+* End-minus-start difference
+* Linear trend (slope)
+* Standard deviation (emotional volatility)
+
+---
+
+## Findings
+
+### Tone Progression
+
+All three speeches show an overall upward emotional trajectory, ending more positively than they begin.
+
+* **Inaugural Address** shows the strongest increase in sentiment, reflecting a rhetorical build toward unity and inspiration.
+* **Farewell Address** exhibits a moderate upward trend, with cautionary elements balanced by hopeful conclusions.
+* **Checkers Speech** shows minimal overall trend but high emotional volatility, with significant peaks and dips corresponding to personal and defensive appeals.
+
+### Emotional Turning Points
+
+Sentiment peaks align with rhetorical shifts such as:
+
+* Calls to unity
+* Appeals to freedom or national purpose
+* Personal or emotionally charged narratives
+
+Negative troughs typically correspond to:
+
+* References to war, danger, or political threat
+* Acknowledgment of national or global challenges
+
+### Structural Patterns
+
+Despite differences in context and purpose, the speeches share a similar rhetorical arc:
+
+1. Formal or contextual introduction
+2. Identification of challenges
+3. Moral or ideological framing
+4. Positive or motivational conclusion
+
+The sentiment time series mirrors this structure, demonstrating how emotional progression reinforces persuasive intent.
+
+---
+
+## Conclusion
+
+This project demonstrates that sentiment analysis can be extended beyond document classification to capture dynamic emotional structure within discourse. Treating sentiment as a time series reveals how speakers strategically manage tone across a speech to guide audience perception, build tension, and conclude with impact.
+
+By combining sentence-level sentiment scoring with temporal indexing, the analysis provides quantitative support for classical rhetorical theory regarding emotional build-up and resolution.
+
+
